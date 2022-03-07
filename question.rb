@@ -1,8 +1,8 @@
 class Question
-  attr_reader :question, :solution
+  attr_reader :prompt, :solution
   def initialize()
     question = make_question()
-    @question = question[0]
+    @prompt = question[0]
     @solution = question[1]
   end
 

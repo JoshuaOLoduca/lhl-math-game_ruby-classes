@@ -1,4 +1,5 @@
 require './player.rb'
+require './gamemanager.rb'
 class GameLobby
   def initialize()
     @players = []
@@ -14,17 +15,18 @@ class GameLobby
     end
 
     while replay
-      # GameManager.new(@players)
-      # replay = GameManager.start()
-      puts 'replay Loop'
-      replay = false
+      game = GameManager.new(@players)
+      @players.each do |player|
+        player.reset
+      end
+      replay = game.start()
     end
   end
 
   # Return true or false
   def prompt_for_another_player
     return true if @players.length == 1
-    
+
     puts "Do you wish to add another player? y/n"
     input =  gets.chomp.downcase
 
