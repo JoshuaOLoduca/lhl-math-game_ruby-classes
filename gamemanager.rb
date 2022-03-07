@@ -9,11 +9,9 @@ class GameManager
   end
 
   def start
-    while @player_index.length > 1
-      start_turn
-    end
+    start_turn while @player_index.length > 1
     print_winner
-    return prompt_for_replay
+    prompt_for_replay
   end
 
   protected
@@ -24,12 +22,10 @@ class GameManager
     remaining_lifes = current_player.life
     answer_is_correct = ask_question current_player.name
 
-    if !answer_is_correct
-      remaining_lifes = current_player.lose_life
-    end
+    remaining_lifes = current_player.lose_life unless answer_is_correct
 
     # END OF TURN
-    if remaining_lifes <= 0 
+    if remaining_lifes <= 0
       @player_index.shift
     else
       @player_index.rotate!
@@ -39,18 +35,18 @@ class GameManager
   end
 
   # Returns bool bases on correct/incorrect answer
-  def ask_question player_name
+  def ask_question(player_name)
     question = Question.new
-    
+
     puts "#{player_name}: #{question.prompt}"
     answer = gets.chomp.to_i
-    
+
     if answer == question.solution
-      puts "Correct!"
-      return true 
+      puts 'Correct!'
+      true
     else
       puts "You're a failure"
-      return false
+      false
     end
   end
 
@@ -60,7 +56,7 @@ class GameManager
       result.push("#{player.name}: #{player.life}/#{player.max_lifes}")
     end
 
-    return result.join(' vs ')
+    result.join(' vs ')
   end
 
   def print_winner
@@ -68,9 +64,10 @@ class GameManager
   end
 
   def prompt_for_replay
-    print "Play Again? y/n: "
+    print 'Play Again? y/n: '
     answer = gets.chomp.downcase
     return true if answer == 'y'
-    return false
+
+    false
   end
 end

@@ -1,6 +1,6 @@
-require './question.rb'
-require './gamelobby.rb'
-require './player.rb'
-require './gamemanager.rb'
+require './question'
+require './gamelobby'
+require './player'
+require './gamemanager'
 game = GameLobby.new
 game.start

@@ -1,10 +1,10 @@
 class GameLobby
-  def initialize()
+  def initialize
     @players = []
   end
 
   # Starts game
-  def start()
+  def start
     get_players = true
     replay = true
     while get_players
@@ -17,8 +17,8 @@ class GameLobby
       @players.each do |player|
         player.reset
       end
-      replay = 
-      game.start()
+      replay =
+        game.start
     end
   end
 
@@ -26,13 +26,14 @@ class GameLobby
   def prompt_for_another_player
     return true if @players.length == 1
 
-    puts "Do you wish to add another player? y/n"
+    puts 'Do you wish to add another player? y/n'
     input =  gets.chomp.downcase
 
-    return false unless input == "y"
+    return false unless input == 'y'
+
     true
   end
-  
+
   # Get player name and init new Player from Class
   def get_player
     print 'What is their name? '
@@ -40,5 +41,4 @@ class GameLobby
 
     Player.new(player_name)
   end
-  
 end
