@@ -1,5 +1,3 @@
-require './player.rb'
-require './gamemanager.rb'
 class GameLobby
   def initialize()
     @players = []
@@ -19,7 +17,8 @@ class GameLobby
       @players.each do |player|
         player.reset
       end
-      replay = game.start()
+      replay = 
+      game.start()
     end
   end
 

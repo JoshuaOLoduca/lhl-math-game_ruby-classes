@@ -1,5 +1,6 @@
 class Player
   attr_reader :name, :life, :max_lifes
+  
   def initialize(name, lives = 3)
     @name = name
     @max_lifes = lives

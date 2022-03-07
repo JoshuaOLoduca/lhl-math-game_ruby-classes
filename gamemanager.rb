@@ -1,7 +1,10 @@
-require './question.rb'
 class GameManager
   def initialize(player_list)
+    # [PlayerClass, PlayerClass]
     @players = player_list
+    # [0,1,2]
+    # [1,2,0]
+    # [2,0,1]
     @player_index = (0..(player_list.length - 1)).to_a
   end
 
@@ -9,6 +12,7 @@ class GameManager
     while @player_index.length > 1
       start_turn
     end
+    print_winner
     return prompt_for_replay
   end
 
@@ -20,9 +24,10 @@ class GameManager
     remaining_lifes = current_player.life
     answer_is_correct = ask_question current_player.name
 
-    if answer_is_correct == false
+    if !answer_is_correct
       remaining_lifes = current_player.lose_life
     end
+
     # END OF TURN
     if remaining_lifes <= 0 
       @player_index.shift
@@ -31,8 +36,6 @@ class GameManager
     end
 
     puts format_player_lives
-    
-    print_winner if @player_index.length == 1
   end
 
   # Returns bool bases on correct/incorrect answer
