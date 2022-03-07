@@ -1,1 +1,1 @@
-Made by @andrewgjh and myself
+Made by [@andrewgjh](https://github.com/andrewgjh) and myself
