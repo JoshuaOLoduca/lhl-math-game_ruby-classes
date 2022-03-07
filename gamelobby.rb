@@ -24,8 +24,10 @@ class GameLobby
   # Return true or false
   def prompt_for_another_player
     return true if @players.length == 1
+    
     puts "Do you wish to add another player? y/n"
     input =  gets.chomp.downcase
+
     return false unless input == "y"
     true
   end
